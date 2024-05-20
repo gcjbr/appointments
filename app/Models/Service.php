@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cknow\Money\Casts\MoneyIntegerCast;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
@@ -12,6 +13,10 @@ class Service extends Model
         'slug',
         'duration',
         'price',
+    ];
+
+    protected $casts = [
+        'price' => MoneyIntegerCast::class,
     ];
 
     public function employees(): BelongsToMany
